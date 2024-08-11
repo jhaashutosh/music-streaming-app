@@ -1,10 +1,11 @@
 import styles from '../styles/module/leftSidebar.module.css';
+import Image from 'next/image';
 
 const LeftSidebar = () => {
   return (
     <div className={`${styles.sidebar} flex flex-col p-6`}>
       <div className="logo mb-8">
-        <img src="/images/logo.png" alt="Logo" />
+        <Image src="/images/logo.png" style={{ marginLeft: '-30px' }} width={100} height={100} alt="Logo" />
       </div>
       <nav className="flex flex-col space-y-4">
         <a href="#" className="text-white">Home</a>

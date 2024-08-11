@@ -22,10 +22,9 @@ import {
         {/* Song Info */}
         <div className="flex items-center">
           <div className="flex items-center">
-            <img src="/images/album-cover.png" alt="Album Cover" className="h-12 w-12 rounded" />
             <div className="ml-4">
               <h4 className="text-white">Date</h4>
-              <p className="text-gray-400">あれくん</p>
+              <p className="text-gray-400 text-sm truncate">あれくん</p>
             </div>
           </div>
           <div className="flex items-center ml-6 space-x-4">
