@@ -1,0 +1,6 @@
+.mainContent {
+    padding: 64px 120px;
+    flex-grow: 1;
+    display: flex;
+    width: 100%;
+}
