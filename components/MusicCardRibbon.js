@@ -2,78 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import Card from './MusicCard';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
-const TopHitsSection = () => {
+const MusicCardRibbon = ({heading, songsArray}) => {
   const [visibleCards, setVisibleCards] = useState(4);
   const [cardWidth, setCardWidth] = useState(0);
   const containerRef = useRef(null);
   const scrollContainerRef = useRef(null);
-
-
-  const hits = [
-    {
-      id: 1,
-      imagePath: '/music/music1.jpg',
-      title: 'Song 1',
-      singer: 'asvnakjsvbajvn janvlanvlj',
-      musicPath: '/path/to/music1.mp3',
-    },
-    {
-      id: 2,
-      imagePath: '/music/music2.avif',
-      title: 'Song 2',
-      singer: 'asnbakb va dvadv',
-      musicPath: '/path/to/music1.mp3',
-    },
-    {
-      id: 3,
-      imagePath: '/music/music3.jpg',
-      title: 'Song 12',
-      singer: 'Samsnv kajvjasn v',
-      musicPath: '/path/to/music1.mp3',
-    },
-    {
-      id: 4,
-      imagePath: '/music/music4.png',
-      title: 'Song 1222',
-      singer: 'askvbajhsbv adv',
-      musicPath: '/path/to/music1.mp3',
-    },
-    {
-      id: 5,
-      imagePath: '/music/music5.jpg',
-      title: 'Song 122222',
-      singer: 'asnvc asbckjasb vcav',
-      musicPath: '/path/to/music1.mp3',
-    },
-    {
-      id: 6,
-      imagePath: '/music/music6.jpg',
-      title: 'Song 1',
-      singer: 'Singer 122asmcnbasc222',
-      musicPath: '/path/to/music1.mp3',
-    },
-    {
-      id: 7,
-      imagePath: '/music/music7.webp',
-      title: 'Song 1',
-      singer: 'Singer 122222222222',
-      musicPath: '/path/to/music1.mp3',
-    },
-    {
-      id: 8,
-      imagePath: '/music/music8.jpg',
-      title: 'Song 1',
-      singer: 'Singer 122222233444',
-      musicPath: '/path/to/music1.mp3',
-    },
-    {
-      id: 9,
-      imagePath: '/music/music3.jpg',
-      title: 'Song 1',
-      singer: 'Singer 122222asfjb233444',
-      musicPath: '/path/to/music1.mp3',
-    },
-  ];
 
   useEffect(() => {
     const updateVisibleCards = () => {
@@ -115,7 +48,7 @@ const TopHitsSection = () => {
   return (
     <div className="mt-8">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl text-white font-bold">Top Hits</h2>
+        <h2 className="text-2xl text-white font-bold">{heading}</h2>
         <button className="text-blue-500">See All</button>
       </div>
       <div className="relative" ref={containerRef}>
@@ -125,7 +58,7 @@ const TopHitsSection = () => {
           style={{ scrollBehavior: 'smooth' }}
         >
           <div className="flex">
-            {hits.map((hit) => (
+            {songsArray.map((hit) => (
               <div
                 key={hit.id}
                 style={{ minWidth: `${cardWidth}px` }}
@@ -158,4 +91,4 @@ const TopHitsSection = () => {
   );
 };
 
-export default TopHitsSection;
+export default MusicCardRibbon;

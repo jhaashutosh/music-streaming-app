@@ -8,4 +8,5 @@
 .main {
     width: 60%;
     padding: 16px 32px;
+    position: relative;
 }
