@@ -33,21 +33,22 @@ import {
             <FaPlus className="text-white" />
           </div>
         </div>
-  
-        {/* Player Controls */}
-        <div className="flex items-center space-x-4">
-          <FaRandom className="text-white" />
-          <FaStepBackward className="text-white" />
-          <div className="bg-white p-2 rounded-full">
-            <FaPause className="text-black" /> {/* Toggle between FaPause and FaPlay */}
+
+        {/* Controls */}
+        <div className="controls flex items-center space-x-4 text-white w-full flex-col px-24">
+          <div className="flex items-center space-x-4">
+            <FaRandom className="text-white" />
+            <FaStepBackward className="text-white" />
+            <div className="bg-white p-2 rounded-full">
+              <FaPause className="text-black" /> {/* Toggle between FaPause and FaPlay */}
+            </div>
+            <FaStepForward className="text-white" />
+            <FaSync className="text-white" />
           </div>
-          <FaStepForward className="text-white" />
-          <FaSync className="text-white" />
-        </div>
-  
-        {/* Progress Bar */}
-        <div className="flex-grow mx-6">
-          <input type="range" className={`${styles.rangeInput} w-full`} />
+    
+          <div className="flex-grow w-full">
+            <input type="range" className={`${styles.rangeInput} w-full`} />
+          </div>
         </div>
   
         {/* Volume and Other Controls */}
