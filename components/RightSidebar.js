@@ -7,46 +7,48 @@ const RightSidebar = () => {
   const recentlyPlayedArr = [
     {
       id: 1,
-      imagePath: '/music/music1.jpg',
+      imagePath: '/musicCovers/music1.jpg',
       title: 'Song 1',
       singer: 'ash',
-      musicPath: '/path/to/music1.mp3',
+      musicPath: '/music/music1.mp3',
     },
     {
       id: 2,
-      imagePath: '/music/music3.jpg',
+      imagePath: '/musicCovers/music3.jpg',
       title: 'Song 2',
-      singer: 'ash',
-      musicPath: '/path/to/music1.mp3',
+      singer: 'ashu',
+      musicPath: '/music/music2.mp3',
     },
     {
       id: 3,
-      imagePath: '/music/music4.png',
+      imagePath: '/musicCovers/music4.png',
       title: 'Song 12',
-      singer: 'ash',
+      singer: 'ashutosh',
+      musicPath: '/music/music3.mp3',
     },
   ];
 
   const myPlaylistsArr = [
     {
       id: 1,
-      imagePath: '/music/music1.jpg',
+      imagePath: '/musicCovers/music1.jpg',
       title: 'Song 1',
       singer: 'ash',
-      musicPath: '/path/to/music1.mp3',
+      musicPath: '/music/music1.mp3',
     },
     {
       id: 2,
-      imagePath: '/music/music3.jpg',
+      imagePath: '/musicCovers/music3.jpg',
       title: 'Song 2',
-      singer: 'ash',
-      musicPath: '/path/to/music1.mp3',
+      singer: 'ashu',
+      musicPath: '/music/music2.mp3',
     },
     {
       id: 3,
-      imagePath: '/music/music4.png',
+      imagePath: '/musicCovers/music4.png',
       title: 'Song 12',
-      singer: 'ash',
+      singer: 'ashutosh',
+      musicPath: '/music/music3.mp3',
     },
   ]
 
