@@ -4,3 +4,8 @@
     display: flex;
     width: 100%;
 }
+
+.main {
+    width: 75%;
+    padding: 16px 32px;
+}
