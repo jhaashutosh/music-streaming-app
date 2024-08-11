@@ -1,7 +1,7 @@
 import React from 'react'
 import ListCard from './ListCard';
 
-function ListContainer({title, data}) {
+function ListContainer({title, data, currentMusic, setCurrentMusic}) {
   return (
     <div className='w-full mt-8'>
         <div className="recently-played w-full flex justify-between">
@@ -10,7 +10,7 @@ function ListContainer({title, data}) {
         </div>
         <div className="flex-col flex gap-4 mt-4">
             {data.map((item) => (
-                <ListCard key={item.id} data={item} />
+                <ListCard key={item.id} data={item} onClick={() => setCurrentMusic(item)} />
             ))}
         </div>
     </div>

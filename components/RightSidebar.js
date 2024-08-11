@@ -1,8 +1,7 @@
 import styles from '../styles/module/rightSidebar.module.css';
 import ListContainer from './ListContainer';
 
-const RightSidebar = () => {
-
+const RightSidebar = ({currentMusic, setCurrentMusic}) => {
 
   const recentlyPlayedArr = [
     {
@@ -59,8 +58,8 @@ const RightSidebar = () => {
         <h4 className="text-white text-center">Ashutosh</h4>
       </div>
       <div className="w-full overflow-y-auto">
-        <ListContainer title={'Recently Played'} data={recentlyPlayedArr} />
-        <ListContainer title={'My Playlists'} data={myPlaylistsArr} />
+        <ListContainer currentMusic={currentMusic} setCurrentMusic={setCurrentMusic} title={'Recently Played'} data={recentlyPlayedArr} />
+        <ListContainer currentMusic={currentMusic} setCurrentMusic={setCurrentMusic} title={'My Playlists'} data={myPlaylistsArr} />
       </div>  
     </div>
   );

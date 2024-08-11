@@ -3,8 +3,7 @@ import styles from '../styles/module/main.module.css';
 import Header from './Header';
 import MusicCardRibbon from './MusicCardRibbon';
 
-const MainSection = () => {
-
+const MainSection = ({currentMusic, setCurrentMusic}) => {
 
   const hits = [
     {
@@ -78,8 +77,8 @@ const MainSection = () => {
       <Header />
       <FeaturedSection />
       <div style={{ overflowY: 'auto', scrollBehavior: 'smooth'}}>
-        <MusicCardRibbon songsArray = {hits} heading = {'Top Hits'}/>
-        <MusicCardRibbon songsArray = {hits} heading = {'New Releases'} />
+        <MusicCardRibbon currentMusic = {currentMusic} setCurrentMusic = {setCurrentMusic} songsArray = {hits} heading = {'Top Hits'}/>
+        <MusicCardRibbon currentMusic = {currentMusic} setCurrentMusic = {setCurrentMusic} songsArray = {hits} heading = {'New Releases'} />
       </div>
     </div>
   );

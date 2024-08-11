@@ -12,14 +12,13 @@ import {
   FaMicrophone,
   FaDesktop,
   FaShareAlt,
+  FaMicrophoneSlash,
 } from "react-icons/fa";
 import styles from "../styles/module/musicPlayer.module.css";
 
-const MusicPlayer = ({
-  musicPath = '/music/music1.mp3',
-  title = 'Song 1',
-  singer = 'asvnakjsvbajvn janvlanvlj',
-}) => {
+const MusicPlayer = ({ musicPath = '/music/music1.mp3', title = 'Song 1', singer = 'ash' }) => {
+  console.log({ musicPath, title, singer });
+  const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [currentTime, setCurrentTime] = useState(0);
@@ -59,6 +58,11 @@ const MusicPlayer = ({
     }
   };
 
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    audioRef.current.muted = !isMuted; // Corrected the logic here
+  };
+
   const handleVolumeChange = (e) => {
     setVolume(e.target.value);
     audioRef.current.volume = e.target.value;
@@ -70,6 +74,8 @@ const MusicPlayer = ({
     audioRef.current.currentTime = seekTime;
   };
 
+  const progressValue = duration ? (currentTime / duration) * 100 : 0;
+
   return (
     <div
       className={`${styles.player} fixed bottom-0 left-0 right-0 p-4 bg-black flex items-center justify-between`}
@@ -78,7 +84,7 @@ const MusicPlayer = ({
       <div className="flex items-center">
         <div className="flex items-center">
           <div className="ml-4">
-            <h4 className="text-white">{title}</h4>
+            <h4 className="text-white truncate">{title}</h4>
             <p className="text-gray-400 text-sm truncate">{singer}</p>
           </div>
         </div>
@@ -113,7 +119,7 @@ const MusicPlayer = ({
             className={`${styles.rangeInput} w-full`}
             min="0"
             max="100"
-            value={(currentTime / duration) * 100}
+            value={progressValue}
             onChange={handleProgressChange}
           />
         </div>
@@ -131,7 +137,7 @@ const MusicPlayer = ({
           value={volume}
           onChange={handleVolumeChange}
         />
-        <FaMicrophone className="text-white" />
+        {!isMuted ? <FaMicrophoneSlash className="text-white" onClick={toggleMute} /> : <FaMicrophone className="text-white" onClick={toggleMute} />}
         <FaDesktop className="text-white" />
         <FaShareAlt className="text-white" />
       </div>

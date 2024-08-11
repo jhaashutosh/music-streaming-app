@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Card from './MusicCard';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
-const MusicCardRibbon = ({heading, songsArray}) => {
+const MusicCardRibbon = ({heading, songsArray, currentMusic, setCurrentMusic}) => {
   const [visibleCards, setVisibleCards] = useState(4);
   const [cardWidth, setCardWidth] = useState(0);
   const containerRef = useRef(null);
@@ -63,6 +63,7 @@ const MusicCardRibbon = ({heading, songsArray}) => {
                 key={hit.id}
                 style={{ minWidth: `${cardWidth}px` }}
                 className="flex-shrink-0"
+                onClick={() => setCurrentMusic(hit)}
               >
                 <Card
                   imagePath={hit.imagePath}
