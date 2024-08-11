@@ -1,0 +1,10 @@
+.featuredCard {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #000000; /* Border color */
+  }
+  
+  .imageWrapper img {
+    border-radius: 0; /* Reset border radius for the image */
+  }
+  
