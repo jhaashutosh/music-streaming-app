@@ -6,9 +6,11 @@ import MusicPlayer from '../components/MusicPlayer';
 export default function Home() {
   return (
     <div className="flex h-screen w-full justify-between">
-      <LeftSidebar />
-      <MainSection />
-      <RightSidebar />
+      <div className='w-full mb-16 flex'>
+        <LeftSidebar />
+        <MainSection />
+        <RightSidebar />
+      </div>
       <MusicPlayer />
     </div>
   );

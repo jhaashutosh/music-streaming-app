@@ -6,7 +6,8 @@
 }
 
 .main {
-    width: 60%;
+    width: 62%;
     padding: 16px 32px;
     position: relative;
+    background-color: #121212;
 }
