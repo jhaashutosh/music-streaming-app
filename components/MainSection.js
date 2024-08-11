@@ -1,7 +1,7 @@
 import FeaturedSection from './FeaturedSection';
 import TopHitsSection from './TopHitsSection';
 import NewReleasesSection from './NewReleasesSection';
-import styles from '../styles/module/mainSection.module.css';
+import styles from '../styles/module/main.module.css';
 import Header from './Header';
 
 const MainSection = () => {
