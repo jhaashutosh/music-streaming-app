@@ -7,6 +7,8 @@ import CurrentMusicContext from '../context/currentMusicContext';
 import FavouritesContext from '../context/favouritesContext';
 import CollectionsContext from '../context/collectionsContext';
 import { Toaster } from "react-hot-toast";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export default function Home() {
   const [currentMusic, setCurrentMusic] = useState({

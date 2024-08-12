@@ -1,99 +1,94 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
+import Slider from 'react-slick';
 import Card from './MusicCard';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { musicList as songsArray } from '@/data/MusicData';
 import CurrentMusicContext from '../context/currentMusicContext';
 
-const MusicCardRibbon = ({heading}) => {
-  const {setCurrentMusic, setIsMusicChanged} = useContext(CurrentMusicContext)
-  const [visibleCards, setVisibleCards] = useState(4);
-  const [cardWidth, setCardWidth] = useState(0);
-  const containerRef = useRef(null);
-  const scrollContainerRef = useRef(null);
+const CustomPrevArrow = ({ className, style, onClick }) => (
+  <button
+    className={`slick-prev ${className}`}
+    style={{ ...style, left: 0, zIndex: 1 }}
+    onClick={onClick}
+  >
+    &#9664;
+  </button>
+);
 
-  useEffect(() => {
-    const updateVisibleCards = () => {
-      const width = window.innerWidth;
-      if (width >= 1280) {
-        setVisibleCards(5);
-      } else if (width >= 1024) {
-        setVisibleCards(4);
-      } else if (width >= 768) {
-        setVisibleCards(3);
-      } else {
-        setVisibleCards(2);
-      }
-    };
+const CustomNextArrow = ({ className, style, onClick }) => (
+  <button
+    className={`slick-next ${className}`}
+    style={{ ...style, right: 0, zIndex: 1 }}
+    onClick={onClick}
+  >
+    &#9654;
+  </button>
+);
 
-    window.addEventListener('resize', updateVisibleCards);
-    updateVisibleCards();
+const sliderSettings = {
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  nextArrow: <CustomNextArrow />,
+  prevArrow: <CustomPrevArrow />,
+  responsive: [
+    {
+      breakpoint: 1280,
+      settings: {
+        slidesToShow: 5,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+  ],
+};
 
-    return () => window.removeEventListener('resize', updateVisibleCards);
-  }, []);
-
-  useEffect(() => {
-    const containerWidth = containerRef.current.offsetWidth;
-    setCardWidth(containerWidth / visibleCards);
-  }, [visibleCards]);
-
-  const handleNext = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += cardWidth;
-    }
-  };
-
-  const handlePrev = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft -= cardWidth;
-    }
-  };
+const MusicCardRibbon = ({ heading }) => {
+  const { setCurrentMusic, setIsMusicChanged } = useContext(CurrentMusicContext);
 
   return (
-    <div className="mt-8 mb-8">
+    <div className="mt-8 mb-8 bg-none relative">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl text-white font-bold">{heading}</h2>
-        {/* <button className="text-blue-500">See All</button> */}
+        <button className="text-blue-500">See All</button>
       </div>
-      <div className="relative" ref={containerRef}>
-        <div
-          className="flex overflow-hidden"
-          ref={scrollContainerRef}
-          style={{ scrollBehavior: 'smooth' }}
-        >
-          <div className="flex">
-            {songsArray.map((hit) => (
-              <div
-                key={hit.id}
-                style={{ minWidth: `${cardWidth}px` }}
-                className="flex-shrink-0"
-                onClick={() => {
-                    setIsMusicChanged(true)
-                    setCurrentMusic(hit);
-                  }
+      <div className="relative">
+        <Slider {...sliderSettings}>
+          {songsArray.map((hit) => (
+            <div
+              key={hit.id}
+              className="flex-shrink-0"
+              onClick={() => {
+                  setIsMusicChanged(true);
+                  setCurrentMusic(hit);
                 }
-              >
-                <Card
-                  imagePath={hit.imagePath}
-                  title={hit.title}
-                  singer={hit.singer}
-                  onClick={() => console.log(`Playing ${hit.musicPath}`)}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <button
-          onClick={handlePrev}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 bg-gray-700 rounded-full"
-        >
-          <FaArrowLeft className="text-white" />
-        </button>
-        <button
-          onClick={handleNext}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 p-2 bg-gray-700 rounded-full"
-        >
-          <FaArrowRight className="text-white" />
-        </button>
+              }
+            >
+              <Card
+                imagePath={hit.imagePath}
+                title={hit.title}
+                singer={hit.singer}
+                onClick={() => console.log(`Playing ${hit.musicPath}`)}
+              />
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import React from 'react';
 const Card = ({ imagePath, title, singer, onClick }) => {
   return (
     <div
-      className="bg-black rounded-lg shadow-lg p-4 text-white cursor-pointer"
+      className="bg-transparent rounded-lg shadow-lg p-4 text-white cursor-pointer"
       onClick={onClick}
     >
       <img

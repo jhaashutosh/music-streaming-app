@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext, memo, useCallback } from 'react';
 import {
   FaHeart, FaPlus, FaPlay, FaPause, FaStepBackward, FaStepForward, FaRandom,
-  FaSync, FaVolumeUp, FaMicrophone, FaDesktop, FaShareAlt, FaMicrophoneSlash,
+  FaSync, FaVolumeUp, FaDesktop, FaShareAlt,
 } from "react-icons/fa";
 import styles from "../styles/module/musicPlayer.module.css";
 import CurrentMusicContext from '../context/currentMusicContext';
@@ -9,12 +9,14 @@ import { musicList as songsArray } from '@/data/MusicData';
 import Favourites from '../context/favouritesContext';
 import Collections from '../context/collectionsContext';
 import { MdCollectionsBookmark as CollectionsIcon } from "react-icons/md";
+import Image from 'next/image';
+import { FaVolumeXmark as MutedIcon } from "react-icons/fa6";
 
 const MusicPlayer = () => {
   const { currentMusic, isMusicChanged, setCurrentMusic, setIsMusicChanged } = useContext(CurrentMusicContext);
   const { favourites, setFavourites } = useContext(Favourites);
   const { collections, setCollections } = useContext(Collections);
-  const { id, title, singer, musicPath } = currentMusic;
+  const { id, title, singer, musicPath, imagePath } = currentMusic;
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
@@ -170,8 +172,9 @@ const MusicPlayer = () => {
 
   return (
     <div className={`${styles.player} fixed bottom-0 left-0 right-0 p-4 bg-black flex items-center justify-between`}>
-      <div className="flex items-center" style={{ width: '400px' }}>
+      <div className="flex items-center" style={{ width: '600px' }}>
         <div className="flex items-center">
+          <Image src={imagePath} alt={title} width={50} height={50} />
           <div className="ml-4">
             <h4 className="text-white truncate">{title}</h4>
             <p className="text-gray-400 text-sm truncate">{singer}</p>
@@ -207,7 +210,7 @@ const MusicPlayer = () => {
       </div>
 
       <div className="flex items-center space-x-4">
-        <FaVolumeUp className="text-white" />
+        {!isMuted ? <FaVolumeUp className="text-white cursor-pointer" onClick={toggleMute} /> : <MutedIcon className="text-white cursor-pointer" onClick={toggleMute} />}
         <input
           type="range"
           className={`${styles.rangeInput} w-24`}
@@ -217,7 +220,6 @@ const MusicPlayer = () => {
           value={volume}
           onChange={handleVolumeChange}
         />
-        {!isMuted ? <FaMicrophoneSlash className="text-white cursor-pointer" onClick={toggleMute} /> : <FaMicrophone className="text-white" onClick={toggleMute} />}
       </div>
 
       <audio ref={audioRef} />
