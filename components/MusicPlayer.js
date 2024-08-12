@@ -186,7 +186,7 @@ const MusicPlayer = () => {
         </div>
       </div>
 
-      <div className="controls flex items-center space-x-4 text-white w-full flex-col px-24">
+      <div className={`${styles.controls} flex items-center space-x-4 text-white w-full flex-col px-24`}>
         <div className="flex items-center space-x-4">
           <FaRandom onClick={handleRandomClick} className="text-white" />
           <FaStepBackward onClick={backButtonClick} className="text-white cursor-pointer" />
