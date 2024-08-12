@@ -8,7 +8,7 @@ const MainSection = ({currentMusic, setCurrentMusic}) => {
 
   return (
     <div className={`${styles.main} flex flex-col overflow-hidden`}>
-      <Header />
+      {/* <Header /> */}
       <FeaturedSection />
       <div style={{ overflowY: 'auto', scrollBehavior: 'smooth'}}>
         <MusicCardRibbon heading = {'Top Hits'}/>

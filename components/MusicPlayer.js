@@ -25,15 +25,20 @@ const MusicPlayer = () => {
   const [isPresentInCollection, setIsPresentInCollection] = useState(false);
 
   useEffect(() => {
-    if (audioRef.current && musicPath && isMusicChanged) {
+    if (audioRef.current && musicPath) {
       audioRef.current.src = musicPath;
-      audioRef.current.play();
-      setIsPlaying(true);
+      if (isMusicChanged) {
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch((error) => {
+          console.log('Error playing audio:', error);
+        });
+      }
       setCurrentTime(0);
     }
-    favourites.find((music) => (music.id === id)) ? setIsFavourite(true) : setIsFavourite(false);
-    collections.find((music) => (music.id === id)) ? setIsPresentInCollection(true) : setIsPresentInCollection(false);
-  }, [isMusicChanged, musicPath]);
+    setIsFavourite(favourites.some((music) => music.id === id));
+    setIsPresentInCollection(collections.some((music) => music.id === id));
+  }, [isMusicChanged, musicPath, id, favourites, collections, setIsMusicChanged]);  
 
   useEffect(() => {
     if (audioRef.current) {
@@ -99,15 +104,18 @@ const MusicPlayer = () => {
   }
 
   const togglePlayPause = useCallback(() => {
-    if (audioRef.current) {
+    if (audioRef.current && musicPath) {
       if (!isPlaying) {
-        audioRef.current.play();
+        audioRef.current.play().catch((error) => {
+          console.log('Error playing audio:', error);
+        });
       } else {
         audioRef.current.pause();
       }
       setIsPlaying(prev => !prev);
     }
-  }, [isPlaying]);
+  }, [isPlaying, musicPath]);
+  
 
   const toggleMute = useCallback(() => {
     if (audioRef.current) {

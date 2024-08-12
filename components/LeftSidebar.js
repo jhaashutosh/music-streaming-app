@@ -32,9 +32,9 @@ const LeftSidebar = () => {
         <a href="#" className="text-white flex items-center">
           <FaHome className="mr-2" /> Home
         </a>
-        <a href="#" className="text-gray-400 flex items-center">
+        {/* <a href="#" className="text-gray-400 flex items-center">
           <FaSearch className="mr-2" /> Discover
-        </a>
+        </a> */}
         <div className='flex items-center justify-between text-gray-400' onClick={() => setShowCollections(!showCollections)}>
           <a href="#" className="text-gray-400 flex items-center">
             <FaFolderOpen className="mr-2" /> Collections
