@@ -36,7 +36,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between p-4">
               <FaTimes className="text-white text-2xl cursor-pointer" onClick={() => setShowDrawer(false)} />
             </div>
-            <nav className="flex flex-col p-4 space-y-4">
+            <nav className="flex flex-col p-4 w-full space-y-4">
               <a href="#" className="flex items-center">
                 <FaHome className="mr-2" /> Home
               </a>
