@@ -2,9 +2,10 @@ import React from 'react'
 import Image from 'next/image'
 
 function ListCard({data, onClick}) {
-    const {imagePath, title, singer, musicPath, time = '4s'} = data
+    const {imagePath, title, singer, time} = data;
+
   return (
-    <div onClick={() => onClick(data)} className='flex gap-4 items-center w-full'>
+    <div onClick={() => onClick(data)} className='flex gap-4 items-center w-full cursor-pointer'>
         <Image src={imagePath} alt={title} width={50} height={50} />
         <div className='flex justify-between items-center w-full'>
             <div className='flex-col flex gap-1 text-sm'>

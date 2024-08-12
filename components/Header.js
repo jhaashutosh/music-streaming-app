@@ -6,9 +6,9 @@ export default function Header() {
   return (
     <header className={`${styles.header} bg-secondary-color`}>
       <SearchBar />
-      <div className={styles.menu}>
+      {/* <div className={styles.menu}>
         <MenuIcon />
-      </div>
+      </div> */}
     </header>
   );
 }

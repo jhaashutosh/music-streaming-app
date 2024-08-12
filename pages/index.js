@@ -3,25 +3,40 @@ import LeftSidebar from '../components/LeftSidebar';
 import RightSidebar from '../components/RightSidebar';
 import MainSection from '../components/MainSection';
 import MusicPlayer from '../components/MusicPlayer';
+import CurrentMusicContext from '../context/currentMusicContext';
+import FavouritesContext from '../context/favouritesContext';
+import CollectionsContext from '../context/collectionsContext';
+import { Toaster } from "react-hot-toast";
 
 export default function Home() {
-
   const [currentMusic, setCurrentMusic] = useState({
     id: 1,
     imagePath: '/musicCovers/music1.jpg',
-    title: 'Song 1',
-    singer: 'asvnakjsvbajvn janvlanvlj',
+    title: 'Shadows of the Night',
+    singer: 'The Midnight Symphony',
     musicPath: '/music/music1.mp3',
+    time: '3m'
   });
 
+  const [isMusicChanged, setIsMusicChanged] = useState(false);
+  const [favourites, setFavourites] = useState([]);
+  const [collections, setCollections] = useState([]);
+
   return (
-    <div className="flex h-screen w-full justify-between">
-      <div className='w-full mb-16 flex'>
-        <LeftSidebar />
-        <MainSection currentMusic={currentMusic} setCurrentMusic={setCurrentMusic}/>
-        <RightSidebar currentMusic={currentMusic} setCurrentMusic={setCurrentMusic} />
-      </div>
-      <MusicPlayer currentMusic={currentMusic} />
-    </div>
+    <CurrentMusicContext.Provider value={{ currentMusic, setCurrentMusic, isMusicChanged, setIsMusicChanged }}>
+      <FavouritesContext.Provider value={{ favourites, setFavourites }}>
+        <CollectionsContext.Provider value={{ collections, setCollections }}>
+          <div className="flex h-screen w-full justify-between">
+            <div className='w-full mb-16 flex'>
+              <LeftSidebar />
+              <MainSection />
+              <RightSidebar />
+            </div>
+            <MusicPlayer />
+          </div>
+          <Toaster position="top-right" />
+        </CollectionsContext.Provider>
+      </FavouritesContext.Provider>
+    </CurrentMusicContext.Provider>
   );
 }

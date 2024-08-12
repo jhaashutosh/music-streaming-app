@@ -1,8 +1,22 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Image from 'next/image';
 import styles from '../styles/module/featuredSection.module.css';
+import CurrentMusicContext from '../context/currentMusicContext';
 
 const FeaturedSection = () => {
+
+  const { setCurrentMusic, setIsMusicChanged } = useContext(CurrentMusicContext);
+
+  function playMusicHandler() {
+      setIsMusicChanged(true);
+      setCurrentMusic({
+        imagePath: '/musicCovers/music2.jpg',
+        title: 'New Song',
+        singer: 'Ash King',
+        musicPath: '/music/music2.mp3',
+      });
+    }
+
   return (
     <div className="w-full bg-gradient-to-r from-[#4E605C] to-[#1E2120] rounded-2xl p-10 py-20 mt-5 flex items-center justify-between overflow-hidden relative">
       
@@ -14,7 +28,7 @@ const FeaturedSection = () => {
         <p className="text-gray-200 mb-6">
           Dive into the latest hits and classics. Experience music like never before.
         </p>
-        <button className="bg-[#EFA727] text-black px-6 py-3 rounded-full font-semibold hover:bg-[#d89521] transition duration-300">
+        <button onClick={playMusicHandler} className="bg-[#EFA727] text-black px-6 py-3 rounded-full font-semibold hover:bg-[#d89521] transition duration-300">
           Listen Now
         </button>
       </div>

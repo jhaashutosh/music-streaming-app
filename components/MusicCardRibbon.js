@@ -1,8 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import Card from './MusicCard';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { musicList as songsArray } from '@/data/MusicData';
+import CurrentMusicContext from '../context/currentMusicContext';
 
-const MusicCardRibbon = ({heading, songsArray, currentMusic, setCurrentMusic}) => {
+const MusicCardRibbon = ({heading}) => {
+  const {setCurrentMusic, setIsMusicChanged} = useContext(CurrentMusicContext)
   const [visibleCards, setVisibleCards] = useState(4);
   const [cardWidth, setCardWidth] = useState(0);
   const containerRef = useRef(null);
@@ -63,7 +66,11 @@ const MusicCardRibbon = ({heading, songsArray, currentMusic, setCurrentMusic}) =
                 key={hit.id}
                 style={{ minWidth: `${cardWidth}px` }}
                 className="flex-shrink-0"
-                onClick={() => setCurrentMusic(hit)}
+                onClick={() => {
+                    setIsMusicChanged(true)
+                    setCurrentMusic(hit);
+                  }
+                }
               >
                 <Card
                   imagePath={hit.imagePath}
