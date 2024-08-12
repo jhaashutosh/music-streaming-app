@@ -9,6 +9,7 @@ import CollectionsContext from '../context/collectionsContext';
 import { Toaster } from "react-hot-toast";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Navbar from '@/components/Navbar';
 
 export default function Home() {
   const [currentMusic, setCurrentMusic] = useState({
@@ -30,6 +31,7 @@ export default function Home() {
         <CollectionsContext.Provider value={{ collections, setCollections }}>
           <div className="flex h-screen w-full justify-between">
             <div className='w-full mb-16 flex'>
+              <Navbar />
               <LeftSidebar />
               <MainSection />
               <RightSidebar />
