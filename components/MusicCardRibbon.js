@@ -66,7 +66,7 @@ const MusicCardRibbon = ({ heading }) => {
     <div className="mt-8 mb-8 bg-none relative">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl text-white font-bold">{heading}</h2>
-        <button className="text-blue-500">See All</button>
+        {/* <button className="text-blue-500">See All</button> */}
       </div>
       <div className="relative">
         <Slider {...sliderSettings}>

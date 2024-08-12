@@ -27,7 +27,7 @@ function ListContainer({title}) {
     <div className='w-full mt-8'>
         <div className="recently-played w-full flex justify-between">
             <h3 className="text-white">{title}</h3>
-            <span onClick={toggleShowMoreHandler} className="text-blue-500 cursor-pointer text-sm">See All</span>
+            <span onClick={toggleShowMoreHandler} className="text-blue-500 cursor-pointer text-sm">{showMore ? 'See Less' : 'See All'}</span>
         </div>
         <div className="flex-col flex gap-4 mt-4">
             {data.slice(0, visibleCards).map((item) => (

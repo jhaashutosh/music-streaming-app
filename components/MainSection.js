@@ -13,6 +13,8 @@ const MainSection = ({currentMusic, setCurrentMusic}) => {
       <div style={{ overflowY: 'auto', scrollBehavior: 'smooth'}}>
         <MusicCardRibbon heading = {'Top Hits'}/>
         <MusicCardRibbon heading = {'New Releases'} />
+        <MusicCardRibbon heading = {'Made For You'} />
+        <MusicCardRibbon heading = {'Global Top 50'} />
       </div>
     </div>
   );

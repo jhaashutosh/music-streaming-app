@@ -172,7 +172,7 @@ const MusicPlayer = () => {
 
   return (
     <div className={`${styles.player} fixed bottom-0 left-0 right-0 p-4 bg-black flex items-center justify-between`}>
-      <div className="flex items-center" style={{ width: '600px' }}>
+      <div className={`${styles.musicDetails} flex items-center`} style={{ width: '600px' }}>
         <div className="flex items-center">
           <Image src={imagePath} alt={title} width={50} height={50} />
           <div className="ml-4">
@@ -209,7 +209,7 @@ const MusicPlayer = () => {
         </div>
       </div>
 
-      <div className="flex items-center space-x-4">
+      <div className={`${styles.volumeControls} flex items-center space-x-4`}>
         {!isMuted ? <FaVolumeUp className="text-white cursor-pointer" onClick={toggleMute} /> : <MutedIcon className="text-white cursor-pointer" onClick={toggleMute} />}
         <input
           type="range"
