@@ -7,4 +7,18 @@
   .imageWrapper img {
     border-radius: 0; /* Reset border radius for the image */
   }
+
+  .featureContainer {
+    background-image: url(../../public/images/featured-background.jpg);
+    width: 100%;
+    background-size: cover;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .featureContainer {
+      padding: 24px;
+    }
+}
+
+  
   

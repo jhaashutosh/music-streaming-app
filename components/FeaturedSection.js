@@ -17,14 +17,10 @@ const FeaturedSection = () => {
   }
 
   return (
-    <div className="relative w-full bg-gradient-to-r from-[#4E605C] to-[#1E2120] rounded-2xl p-10 py-20 mt-5 flex flex-col lg:flex lg:flex-row items-center justify-between overflow-hidden md:hidden">
-      
-      <div className="absolute top-0 left-0 w-40 h-40 bg-[#57635F] rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2 hidden lg:block"></div>
-      <div className="absolute bottom-0 right-0 w-56 h-56 bg-[#57635F] rounded-full opacity-20 translate-x-1/2 translate-y-1/2 hidden lg:block"></div>
-
+    <div className={`${styles.featureContainer} relative w-full rounded-2xl p-10 py-20 mt-5 flex flex-col lg:flex lg:flex-row items-center justify-between md:hidden`}>
       <div className="z-10 max-w-md text-center lg:text-left">
-        <h2 className="text-white text-2xl md:text-3xl font-bold mb-4">Featured Album</h2>
-        <p className="text-gray-200 mb-6 text-sm md:text-base">
+        <h2 className="text-[#5A5A5A] text-2xl md:text-3xl font-bold mb-4">Featured Album</h2>
+        <p className="text-[#5A5A5A] mb-6 text-sm md:text-base">
           Dive into the latest hits and classics. Experience music like never before.
         </p>
         <button

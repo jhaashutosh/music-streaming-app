@@ -7,15 +7,13 @@ import { musicList as hits } from '@/data/MusicData';
 const MainSection = ({currentMusic, setCurrentMusic}) => {
 
   return (
-    <div className={`${styles.main} flex flex-col overflow-hidden`}>
+    <div className={`${styles.main} flex flex-col`}>
       {/* <Header /> */}
       <FeaturedSection />
-      <div style={{ overflowY: 'auto', scrollBehavior: 'smooth'}}>
         <MusicCardRibbon heading = {'Top Hits'}/>
         <MusicCardRibbon heading = {'New Releases'} />
         <MusicCardRibbon heading = {'Made For You'} />
         <MusicCardRibbon heading = {'Global Top 50'} />
-      </div>
     </div>
   );
 };
